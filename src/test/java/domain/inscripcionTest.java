@@ -118,4 +118,31 @@ public class inscripcionTest {
       Assert.assertEquals(false, unaInscripcion.aprobada());
 
       }
+
+   @Test
+   public void alumnoNoPuedeCursarADS() {
+      Alumno unAlumno = new Alumno("Agustin", "2090562");
+
+      Materia unaMateria = new Materia("Analisis de Sistemas");
+
+      Materia correlativa1 = new Materia("Algoritmos y ED");
+
+      Materia correlativa2 = new Materia("Sistemas y Organizaciones");
+
+      unaMateria.agregarCorrelativa(correlativa1);
+      unaMateria.agregarCorrelativa(correlativa2);
+
+      List<Materia> materiasDeseadas = new ArrayList<>();
+      materiasDeseadas.add(unaMateria);
+
+
+      unAlumno.agregarMateriasAprobadas(correlativa1);
+
+      Inscripcion unaInscripcion = new Inscripcion(unAlumno, materiasDeseadas);
+
+      Assert.assertEquals(false, unaInscripcion.aprobada());
+
+   }
+
+
    }
